@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VibeStream - Music Player</title>
+    <link rel="stylesheet" href="layout.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="components.css">
+    <link rel="stylesheet" href="playlist.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1>YStream</h1>
+                <div class="dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search music...">
+            </div>
+            <div class="user-profile">
+                <i class="fas fa-user"></i>
+            </div>
+        </header>
+
+        <main>
+            <div class="current-song">
+                <img src="https://images.pexels.com/photos/4571219/pexels-photo-4571219.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Album Art" class="album-art">
+                <h2 class="song-title">Summer Vibes</h2>
+                <p class="artist">Lofi Study</p>
+                <p class="album"></p>
+            </div>
+
+            <div class="player-controls">
+                <div class="progress-bar">
+                    <span class="current-time">0:00</span>
+                    <div class="progress">
+                        <div class="progress-filled"></div>
+                    </div>
+                    <span class="total-time">0:00</span>
+                </div>
+                <div class="controls">
+                    <button class="previous"><i class="fas fa-backward"></i></button>
+                    <button class="play"><i class="fas fa-play"></i></button>
+                    <button class="next"><i class="fas fa-forward"></i></button>
+                </div>
+            </div>
+        </main>
+
+        <aside class="now-playing">
+            <div class="now-playing-header">
+                <h2>Now Playing</h2>
+                <div class="playlist-toggle">
+                    <button class="active">All Songs</button>
+                    <button>Favorites</button>
+                </div>
+            </div>
+            <div class="playlist" id="searchResults">
+                <!-- Songs will be dynamically populated here -->
+            </div>
+        </aside>
+    </div>
+    <script src="songs.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

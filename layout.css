@@ -1,0 +1,91 @@
+/* Layout styles */
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    grid-template-rows: auto 1fr;
+    height: 100vh;
+    gap: 20px;
+    padding: 20px;
+}
+
+main {
+    grid-column: 1;
+    grid-row: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    background: var(--surface-color);
+    border-radius: 15px;
+}
+
+.now-playing {
+    grid-column: 2;
+    grid-row: 2;
+    background: var(--surface-color);
+    border-radius: 15px;
+    padding: 20px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+#searchResults {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 10px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: calc(100vh - 250px);
+    position: relative;
+    background: var(--surface-color);
+}
+
+#searchResults::-webkit-scrollbar {
+    width: 6px;
+}
+
+#searchResults::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 3px;
+}
+
+#searchResults::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Ensure songs are visible */
+.song-item {
+    background: rgba(255, 255, 255, 0.05);
+    margin-bottom: 8px;
+    padding: 12px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-height: 72px;
+}
+
+.song-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(5px);
+}
+
+.song-item.playing {
+    background: rgba(140, 82, 255, 0.2);
+}

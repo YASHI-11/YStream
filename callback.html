@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Authentication Callback</title>
+</head>
+<body>
+    <h2>Authenticating...</h2>
+    <script>
+        // Get URL parameters
+        const hashParams = window.location.hash.substring(1).split('&').reduce((acc, item) => {
+            const [key, value] = item.split('=');
+            acc[key] = decodeURIComponent(value);
+            return acc;
+        }, {});
+
+        // Verify state to prevent CSRF attacks
+        const storedState = localStorage.getItem('spotify_auth_state');
+        const receivedState = hashParams.state;
+
+        if (receivedState !== storedState) {
+            alert('Authentication error: state mismatch. Please try again.');
+            window.close();
+        } else if (hashParams.access_token) {
+            // Clear the stored state
+            localStorage.removeItem('spotify_auth_state');
+            
+            // Store the token securely
+            localStorage.setItem('spotify_token', hashParams.access_token);
+            localStorage.setItem('token_expiry', Date.now() + (hashParams.expires_in * 1000));
+            
+            // Redirect back to main page with token
+            window.opener.postMessage({ 
+                type: 'spotify-token', 
+                token: hashParams.access_token 
+            }, window.location.origin);
+            window.close();
+        }
+    </script>
+</body>
+</html>
